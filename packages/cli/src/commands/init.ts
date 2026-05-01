@@ -54,6 +54,22 @@ export const initCommand = new Command('init')
     )
 
     const target = resolve(process.cwd(), projectName)
+
+    const exists = await fsExtra.pathExists(target)
+    if (exists) {
+      const { overwrite } = await prompts({
+        type: 'confirm',
+        name: 'overwrite',
+        message: chalk.yellow(`Directory "${projectName}" already exists. Overwrite?`),
+        initial: false,
+      })
+      if (!overwrite) {
+        console.log(chalk.red('Aborted.'))
+        process.exit(1)
+      }
+      await fsExtra.remove(target)
+    }
+
     const spinner = ora('Copying template...').start()
 
     try {
@@ -102,22 +118,28 @@ export const initCommand = new Command('init')
       await writeJSON(resolve(target, 'package.json'), pkg, { spaces: 2 })
 
       spinner.text = 'Installing dependencies...'
-      execSync('pnpm install', { cwd: target, stdio: 'pipe' })
+      try {
+        execSync('pnpm install', { cwd: target, stdio: 'pipe' })
+      } catch {
+        spinner.warn(chalk.yellow('pnpm not found — skipping install. Run: npm install -g pnpm'))
+        spinner.start('Finishing up...')
+      }
 
       spinner.text = 'Initializing git repository...'
-      execSync(
-        'git init && git add . && git commit -m "init: scaffold from claude-mvp-toolkit"',
-        { cwd: target, stdio: 'pipe', shell: true },
-      )
+      try {
+        execSync(
+          'git init && git add . && git commit -m "init: scaffold from claude-mvp-toolkit"',
+          { cwd: target, stdio: 'pipe', shell: true },
+        )
+      } catch {
+        spinner.warn(chalk.yellow('git not found — skipping git init'))
+        spinner.start('Finishing up...')
+      }
 
-      spinner.succeed(chalk.green(`Project ${chalk.bold(projectName)} created successfully!`))
-
-      console.log(chalk.dim('\nNext steps:'))
-      console.log(`  ${chalk.cyan('cd')} ${projectName}`)
-      console.log(`  ${chalk.cyan('cp')} .env.example .env.local`)
-      console.log(`  ${chalk.cyan('pnpm')} dev\n`)
+      spinner.succeed(chalk.green('Project ready!'))
+      console.log(chalk.bold(`\n  cd ${projectName} && pnpm dev\n`))
     } catch (err) {
-      spinner.fail('Something went wrong')
+      spinner.fail(chalk.red('Something went wrong'))
       throw err
     }
   })
