@@ -1,0 +1,43 @@
+name: Publish to npm
+
+# Triggered by pushing a version tag: git tag v0.1.0-alpha && git push --tags
+# Required secret: NPM_TOKEN
+#   → GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+#   → Name: NPM_TOKEN  Value: npm token (from npmjs.com → Account → Access Tokens)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm -r build
+
+      - name: Publish
+        run: npm publish --access public
+        working-directory: packages/cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

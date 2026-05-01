@@ -1,18 +1,25 @@
 {
-  "name": "@claude-mvp-toolkit/cli",
-  "version": "0.1.0",
+  "name": "@maxange/claude-mvp-toolkit",
+  "version": "0.1.0-alpha",
   "description": "Scaffold production-ready Next.js + Supabase + Claude AI apps",
+  "license": "MIT",
   "type": "module",
   "bin": {
-    "claude-mvp-toolkit": "dist/index.js"
+    "claude-mvp-toolkit": "./dist/index.js"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",
