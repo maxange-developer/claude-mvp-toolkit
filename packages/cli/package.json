@@ -1,0 +1,35 @@
+{
+  "name": "@claude-mvp-toolkit/cli",
+  "version": "0.1.0",
+  "description": "Scaffold production-ready Next.js + Supabase + Claude AI apps",
+  "type": "module",
+  "bin": {
+    "claude-mvp-toolkit": "dist/index.js"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.3.0",
+    "ora": "^8.2.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.17.57",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}

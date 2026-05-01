@@ -1,0 +1,10 @@
+{
+  "name": "claude-mvp-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "dev": "pnpm -r dev"
+  }
+}
