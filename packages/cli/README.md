@@ -1,6 +1,6 @@
 # @massiangelone/claude-mvp-toolkit
 
-[![npm](https://img.shields.io/npm/v/@massiangelone/claude-mvp-toolkit)](https://www.npmjs.com/package/@massiangelone/claude-mvp-toolkit)
+[![npm](https://img.shields.io/npm/v/@massiangelone/claude-mvp-toolkit?tag=alpha)](https://www.npmjs.com/package/@massiangelone/claude-mvp-toolkit)
 
 Scaffold production-ready Next.js + Supabase + Claude AI apps in seconds.
 
