@@ -9,7 +9,7 @@ CLI that scaffolds production-ready Next.js + Supabase + Claude AI apps in secon
 ## Quickstart
 
 ```bash
-npx claude-mvp-toolkit init my-app
+npx @massiangelone/claude-mvp-toolkit init my-app
 ```
 
 You'll be asked:
@@ -37,7 +37,7 @@ Then: `cd my-app && cp .env.example .env.local && pnpm dev`
 | v0.1 | `init` command — base template |
 | v0.2 | AI chat UI template (streaming) |
 | v0.3 | RAG pipeline template (pgvector + embeddings) |
-| v1.0 | Stable · npm publish |
+| v1.0 | Stable release |
 
 ## Docs
 
