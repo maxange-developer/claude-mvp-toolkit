@@ -4,3 +4,5 @@ dist/
 .env.*.local
 .next/
 *.tsbuildinfo
+packages/cli/templates/
+test-*/

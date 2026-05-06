@@ -9,7 +9,7 @@ import chalk from 'chalk'
 import { execSync } from 'child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const TEMPLATE_DIR = resolve(__dirname, '../../../templates/base')
+const TEMPLATE_DIR = resolve(__dirname, '../../templates/base')
 
 interface Answers {
   ai: 'anthropic' | 'openai' | 'both'
@@ -19,39 +19,50 @@ interface Answers {
   rag: boolean
 }
 
+const DEFAULT_ANSWERS: Answers = {
+  ai: 'anthropic',
+  auth: 'supabase',
+  stripe: false,
+  resend: false,
+  rag: false,
+}
+
 export const initCommand = new Command('init')
   .argument('<project-name>', 'name for the new project')
   .description('Scaffold a new Next.js + Supabase + Claude AI project')
-  .action(async (projectName: string) => {
+  .option('--yes', 'Use default options, skip prompts (Anthropic + Supabase, no extras)')
+  .action(async (projectName: string, options: { yes?: boolean }) => {
     console.log(chalk.bold(`\nCreating ${chalk.cyan(projectName)}...\n`))
 
-    const answers = await prompts(
-      [
-        {
-          type: 'select',
-          name: 'ai',
-          message: 'AI provider?',
-          choices: [
-            { title: 'Anthropic (Claude)', value: 'anthropic' },
-            { title: 'OpenAI (GPT)', value: 'openai' },
-            { title: 'Both', value: 'both' },
+    const answers: Answers = options.yes
+      ? DEFAULT_ANSWERS
+      : await prompts(
+          [
+            {
+              type: 'select',
+              name: 'ai',
+              message: 'AI provider?',
+              choices: [
+                { title: 'Anthropic (Claude)', value: 'anthropic' },
+                { title: 'OpenAI (GPT)', value: 'openai' },
+                { title: 'Both', value: 'both' },
+              ],
+            },
+            {
+              type: 'select',
+              name: 'auth',
+              message: 'Auth provider?',
+              choices: [
+                { title: 'Supabase Auth', value: 'supabase' },
+                { title: 'NextAuth.js', value: 'nextauth' },
+              ],
+            },
+            { type: 'confirm', name: 'stripe', message: 'Add Stripe payments?', initial: false },
+            { type: 'confirm', name: 'resend', message: 'Add Resend email?', initial: false },
+            { type: 'confirm', name: 'rag', message: 'Add RAG / vector search (pgvector)?', initial: false },
           ],
-        },
-        {
-          type: 'select',
-          name: 'auth',
-          message: 'Auth provider?',
-          choices: [
-            { title: 'Supabase Auth', value: 'supabase' },
-            { title: 'NextAuth.js', value: 'nextauth' },
-          ],
-        },
-        { type: 'confirm', name: 'stripe', message: 'Add Stripe payments?', initial: false },
-        { type: 'confirm', name: 'resend', message: 'Add Resend email?', initial: false },
-        { type: 'confirm', name: 'rag', message: 'Add RAG / vector search (pgvector)?', initial: false },
-      ],
-      { onCancel: () => process.exit(1) },
-    )
+          { onCancel: () => process.exit(1) },
+        )
 
     const target = resolve(process.cwd(), projectName)
 
