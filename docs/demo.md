@@ -9,7 +9,7 @@ Target length: ~2 minutes. No audio required — captions work.
 ```bash
 # Clean slate
 rm -rf /tmp/my-saas
-npm install -g @maxange/claude-mvp-toolkit   # or use npx
+npm install -g @massiangelone/claude-mvp-toolkit   # or use npx
 clear
 ```
 

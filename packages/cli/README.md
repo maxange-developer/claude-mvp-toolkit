@@ -1,18 +1,18 @@
-# @maxange/claude-mvp-toolkit
+# @massiangelone/claude-mvp-toolkit
 
 Scaffold production-ready Next.js + Supabase + Claude AI apps in seconds.
 
 ## Quickstart
 
 ```bash
-npx @maxange/claude-mvp-toolkit init my-app
+npx @massiangelone/claude-mvp-toolkit init my-app
 cd my-app && pnpm dev
 ```
 
 Skip prompts and use defaults (Anthropic + Supabase, no extras):
 
 ```bash
-npx @maxange/claude-mvp-toolkit init my-app --yes
+npx @massiangelone/claude-mvp-toolkit init my-app --yes
 ```
 
 ## What's included

@@ -1,5 +1,5 @@
 {
-  "name": "@maxange/claude-mvp-toolkit",
+  "name": "@massiangelone/claude-mvp-toolkit",
   "version": "0.1.0-alpha",
   "description": "Scaffold production-ready Next.js + Supabase + Claude AI apps",
   "license": "MIT",

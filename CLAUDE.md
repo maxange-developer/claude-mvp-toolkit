@@ -6,7 +6,7 @@
 - pnpm workspaces monorepo
 
 ## Structure
-- packages/cli/ — publishable CLI (`@maxange/claude-mvp-toolkit`)
+- packages/cli/ — publishable CLI (`@massiangelone/claude-mvp-toolkit`)
 - packages/templates/base/ — Next.js scaffold copied on `init`
 
 ## Commands

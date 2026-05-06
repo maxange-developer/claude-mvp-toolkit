@@ -1,7 +1,7 @@
 # claude-mvp-toolkit
 
-[![npm](https://img.shields.io/npm/v/@maxange/claude-mvp-toolkit?label=npm&color=orange)](https://www.npmjs.com/package/@maxange/claude-mvp-toolkit)
-[![CI](https://github.com/maxange-developer/claude-mvp-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/maxange-developer/claude-mvp-toolkit/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@massiangelone/claude-mvp-toolkit?label=npm&color=orange)](https://www.npmjs.com/package/@massiangelone/claude-mvp-toolkit)
+[![CI](https://github.com/massiangelone/claude-mvp-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/massiangelone/claude-mvp-toolkit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 CLI that scaffolds production-ready Next.js + Supabase + Claude AI apps in seconds. Answer 5 questions and get a fully configured project with Anthropic or OpenAI, Supabase Auth, optional Stripe payments, Resend email, and RAG/pgvector support — all with TypeScript strict, Tailwind 4, and a pre-wired `.claude/` workspace for AI-assisted development.
@@ -46,7 +46,7 @@ Full documentation: [docs/README.md](docs/README.md)
 ## Development
 
 ```bash
-git clone https://github.com/maxange-developer/claude-mvp-toolkit
+git clone https://github.com/massiangelone/claude-mvp-toolkit
 cd claude-mvp-toolkit
 pnpm install
 pnpm -r build
