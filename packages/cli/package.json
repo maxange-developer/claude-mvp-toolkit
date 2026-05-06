@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "claude-mvp-toolkit": "./dist/index.js"
+    "claude-mvp-toolkit": "dist/index.js"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
