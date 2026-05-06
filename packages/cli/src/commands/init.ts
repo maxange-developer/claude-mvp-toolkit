@@ -85,7 +85,10 @@ export const initCommand = new Command('init')
 
     try {
       await copy(TEMPLATE_DIR, target, {
-        filter: (src) => !src.includes('node_modules') && !src.includes('.next'),
+        filter: (src) => {
+          const rel = src.slice(TEMPLATE_DIR.length)
+          return !rel.includes('node_modules') && !rel.includes('.next')
+        },
       })
 
       spinner.text = 'Configuring project...'

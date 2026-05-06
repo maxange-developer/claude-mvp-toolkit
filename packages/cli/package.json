@@ -1,6 +1,6 @@
 {
   "name": "@massiangelone/claude-mvp-toolkit",
-  "version": "0.1.1-alpha",
+  "version": "0.1.2-alpha",
   "description": "Scaffold production-ready Next.js + Supabase + Claude AI apps",
   "license": "MIT",
   "type": "module",
