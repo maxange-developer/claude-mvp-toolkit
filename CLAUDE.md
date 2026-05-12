@@ -1,4 +1,4 @@
-# Project: claude-mvp-toolkit
+# Project: angel1-mvp-toolkit
 
 ## Stack
 - Node.js · TypeScript strict · tsup (ESM + CJS build)
@@ -6,7 +6,7 @@
 - pnpm workspaces monorepo
 
 ## Structure
-- packages/cli/ — publishable CLI (`@massiangelone/claude-mvp-toolkit`)
+- packages/cli/ — publishable CLI (`@massiangelone/angel1-mvp-toolkit`)
 - packages/templates/base/ — Next.js scaffold copied on `init`
 
 ## Commands

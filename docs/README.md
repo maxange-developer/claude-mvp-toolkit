@@ -1,4 +1,4 @@
-# claude-mvp-toolkit — Documentation
+# angel1-mvp-toolkit — Documentation
 
 ## Getting started
 
@@ -6,7 +6,7 @@ Three commands to a running app:
 
 ```bash
 # 1. Scaffold
-npx claude-mvp-toolkit init my-app
+npx angel1-mvp-toolkit init my-app
 
 # 2. Configure
 cd my-app && cp .env.example .env.local

@@ -245,7 +245,7 @@ export const initCommand = new Command('init')
         spinner.text = 'Initializing git repository...'
         try {
           execSync(
-            'git init && git add . && git commit -m "init: scaffold from claude-mvp-toolkit"',
+            'git init && git add . && git commit -m "init: scaffold from angel1-mvp-toolkit"',
             { cwd: target, stdio: 'pipe', shell: process.platform === 'win32' ? 'cmd.exe' : '/bin/sh' },
           )
         } catch {

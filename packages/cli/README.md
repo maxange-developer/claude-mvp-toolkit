@@ -1,89 +1,105 @@
-# @massiangelone/claude-mvp-toolkit
+# @massiangelone/angel1-mvp-toolkit
 
-[![npm](https://img.shields.io/npm/v/@massiangelone/claude-mvp-toolkit?tag=alpha)](https://www.npmjs.com/package/@massiangelone/claude-mvp-toolkit)
+[![npm](https://img.shields.io/npm/v/@massiangelone/angel1-mvp-toolkit.svg)](https://www.npmjs.com/package/@massiangelone/angel1-mvp-toolkit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Scaffold production-ready Next.js + Supabase AI apps with Claude or OpenAI — in seconds.
+Scaffold production-ready Next.js + Supabase apps with multi-provider AI (Claude, OpenAI, or both) in seconds.
+
+Part of the `angel1-*` toolkit series.
 
 ## Quickstart
 
 ```bash
-npx @massiangelone/claude-mvp-toolkit init my-app
+npx @massiangelone/angel1-mvp-toolkit init my-app
 cd my-app && pnpm dev
 ```
 
-### Choose your AI provider
+Skip prompts and use defaults (Anthropic + Supabase):
 
 ```bash
-# Anthropic (Claude) — default
-npx @massiangelone/claude-mvp-toolkit init my-app --ai anthropic
-
-# OpenAI
-npx @massiangelone/claude-mvp-toolkit init my-app --ai openai
+npx @massiangelone/angel1-mvp-toolkit init my-app --yes
 ```
 
-### Skip prompts
+Pick your AI provider non-interactively:
 
 ```bash
-npx @massiangelone/claude-mvp-toolkit init my-app --yes
-# Equivalent: --ai anthropic, Supabase Auth, no Stripe/Resend/RAG
+npx @massiangelone/angel1-mvp-toolkit init my-app --ai openai
+npx @massiangelone/angel1-mvp-toolkit init my-app --ai anthropic
+npx @massiangelone/angel1-mvp-toolkit init my-app --ai both
 ```
-
-## CLI flags
-
-| Flag | Description |
-|------|-------------|
-| `--ai <provider>` | AI provider: `anthropic` (default) or `openai` |
-| `--yes` / `-y` | Accept all defaults, skip interactive prompts |
 
 ## What's included
 
 - Next.js 16 App Router · TypeScript strict · Tailwind CSS 4
 - Supabase (auth + DB) or NextAuth.js
-- **Provider abstraction layer** — swap between Claude and OpenAI via env var, zero code changes
+- Anthropic SDK (Claude) and/or OpenAI SDK
+- Provider abstraction layer — swap AI providers without rewriting your app code
 - Optional: Stripe payments · Resend email · pgvector RAG
 - Vitest (unit) · Playwright (e2e) · Vercel deploy config
 - Pre-configured CLAUDE.md for Claude Code
 
-## Environment variables
+## Environment Variables
 
-After `init`, copy `.env.example` to `.env.local` and fill in:
+After init, copy `.env.example` to `.env.local` and fill in:
 
-```
+```env
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-ANTHROPIC_API_KEY=      # only if Anthropic (Claude) selected
-OPENAI_API_KEY=         # only if OpenAI selected
-STRIPE_SECRET_KEY=      # only if Stripe selected
-RESEND_API_KEY=         # only if Resend selected
+ANTHROPIC_API_KEY=       # only if Anthropic (Claude) selected
+OPENAI_API_KEY=          # only if OpenAI (GPT) selected
+STRIPE_SECRET_KEY=       # only if Stripe selected
+RESEND_API_KEY=          # only if Resend selected
 ```
 
-Override provider or model at runtime:
+## Stack defaults (`--yes`)
 
-```
-AI_PROVIDER=openai          # anthropic | openai
-AI_MODEL=gpt-4o             # overrides per-provider default
-EMBEDDING_MODEL=text-embedding-3-large
-```
+| Option          | Default            |
+|-----------------|--------------------|
+| AI provider     | Anthropic (Claude) |
+| Auth            | Supabase Auth      |
+| Stripe          | No                 |
+| Resend          | No                 |
+| RAG / pgvector  | No                 |
+
+## CLI flags
+
+| Flag             | Description                                          |
+|------------------|------------------------------------------------------|
+| `--yes` / `-y`   | Skip prompts, use all defaults                       |
+| `--ai <prov>`    | AI provider: `anthropic`, `openai`, or `both`        |
 
 ## Default models
 
-| Provider | Chat model | Embedding model |
-|----------|-----------|----------------|
-| Anthropic | `claude-sonnet-4-6` | `voyage-3` |
-| OpenAI | `gpt-4o-mini` | `text-embedding-3-small` |
+| Provider   | Generation        | Embeddings              |
+|------------|-------------------|-------------------------|
+| Anthropic  | claude-sonnet-4-6 | voyage-3 (via Voyage AI)|
+| OpenAI     | gpt-4o-mini       | text-embedding-3-small  |
 
-## Stack defaults (--yes)
+Override via `.env`:
 
-| Option | Default |
-|--------|---------|
-| AI provider | Anthropic (Claude) |
-| Auth | Supabase Auth |
-| Stripe | No |
-| Resend | No |
-| RAG / pgvector | No |
+```env
+AI_PROVIDER=anthropic     # or openai
+AI_MODEL=claude-opus-4-7
+EMBEDDING_MODEL=voyage-3-large
+```
+
+## Migration from claude-mvp-toolkit
+
+This package was previously published as `@massiangelone/claude-mvp-toolkit`. The old package is deprecated and points here. No code changes are required for existing scaffolds — only the install/invocation command changes:
+
+```bash
+# Before
+npx @massiangelone/claude-mvp-toolkit init my-app
+
+# After
+npx @massiangelone/angel1-mvp-toolkit init my-app
+```
 
 ## Status
 
-Alpha (v0.2.x). CLI command surface is stable. Template shape may change before v1.0.
+Stable (v1.0.0). API stable for `init` command and `--ai` flag.
+
+## License
+
+MIT © Massimiliano Angelone

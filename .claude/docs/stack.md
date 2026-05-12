@@ -1,4 +1,4 @@
-# Stack — claude-mvp-toolkit
+# Stack — angel1-mvp-toolkit
 
 ## CLI (packages/cli)
 commander@12.1 · prompts@2.4 · fs-extra@11.3 · chalk@5.4 · ora@8.2

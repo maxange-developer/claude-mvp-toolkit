@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '__PROJECT_NAME__',
-  description: 'Built with claude-mvp-toolkit',
+  description: 'Built with angel1-mvp-toolkit',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

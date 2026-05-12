@@ -1,0 +1,64 @@
+name: E2E smoke test
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install CLI dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build CLI
+        run: pnpm -r build
+
+      - name: Pack CLI tarball
+        id: pack
+        working-directory: packages/cli
+        run: |
+          TARBALL=$(npm pack --silent)
+          echo "tarball=$PWD/$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Scaffold test project
+        working-directory: /tmp
+        env:
+          CI: 'true'
+        run: |
+          npx --yes ${{ steps.pack.outputs.tarball }} init smoke-app \
+            --ai anthropic --yes
+
+      - name: Install scaffolded project
+        working-directory: /tmp/smoke-app
+        run: pnpm install
+
+      - name: Typecheck scaffolded project
+        working-directory: /tmp/smoke-app
+        run: pnpm typecheck
+
+      - name: Verify expected files exist
+        working-directory: /tmp/smoke-app
+        run: |
+          test -f package.json || (echo "Missing package.json" && exit 1)
+          test -f .env.example || (echo "Missing .env.example" && exit 1)
+          test -d src/lib/ai/providers || (echo "Missing providers dir" && exit 1)
+          test -f src/lib/ai/providers/claude.ts || (echo "Missing claude provider" && exit 1)
+          test -f src/lib/ai/index.ts || (echo "Missing ai index" && exit 1)
+          grep -q "ANTHROPIC_API_KEY" .env.example || (echo "Missing ANTHROPIC_API_KEY in env example" && exit 1)
+          echo "All checks passed"

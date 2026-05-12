@@ -1,4 +1,4 @@
-# Architectural Decisions — claude-mvp-toolkit
+# Architectural Decisions — angel1-mvp-toolkit
 
 ## Build system
 tsup over tsc — handles shebang banner, dual ESM/CJS, no manual postbuild scripts

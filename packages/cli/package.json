@@ -1,11 +1,35 @@
 {
-  "name": "@massiangelone/claude-mvp-toolkit",
-  "version": "0.2.1-alpha.0",
-  "description": "Scaffold production-ready Next.js + Supabase apps with Claude or OpenAI",
+  "name": "@massiangelone/angel1-mvp-toolkit",
+  "version": "1.0.0",
+  "description": "Scaffold production-ready Next.js + Supabase apps with multi-provider AI (Claude, OpenAI, or both)",
   "license": "MIT",
+  "author": "Massimiliano Angelone <massiangelone01@gmail.com>",
+  "keywords": [
+    "angel1",
+    "mvp",
+    "scaffold",
+    "nextjs",
+    "supabase",
+    "anthropic",
+    "claude",
+    "openai",
+    "gpt",
+    "multi-provider",
+    "ai-scaffold",
+    "cli",
+    "starter"
+  ],
+  "homepage": "https://github.com/maxange-developer/claude-mvp-toolkit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxange-developer/claude-mvp-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxange-developer/claude-mvp-toolkit/issues"
+  },
   "type": "module",
   "bin": {
-    "claude-mvp-toolkit": "dist/index.js"
+    "angel1-mvp-toolkit": "dist/index.js"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
