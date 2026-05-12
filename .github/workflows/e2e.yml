@@ -36,13 +36,15 @@ jobs:
           TARBALL=$(npm pack --silent)
           echo "tarball=$PWD/$TARBALL" >> $GITHUB_OUTPUT
 
+      - name: Install CLI from tarball globally
+        run: npm install -g ${{ steps.pack.outputs.tarball }}
+
       - name: Scaffold test project
         working-directory: /tmp
         env:
           CI: 'true'
         run: |
-          npx --yes ${{ steps.pack.outputs.tarball }} init smoke-app \
-            --ai anthropic --yes
+          angel1-mvp-toolkit init smoke-app --ai anthropic --yes
 
       - name: Install scaffolded project
         working-directory: /tmp/smoke-app
