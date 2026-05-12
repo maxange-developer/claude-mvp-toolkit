@@ -7,7 +7,7 @@ const { version } = require('../package.json') as { version: string }
 
 const program = new Command()
   .name('claude-mvp-toolkit')
-  .description('Scaffold production-ready Next.js + Supabase + Claude AI apps')
+  .description('Scaffold production-ready Next.js + Supabase apps with Claude or OpenAI')
   .version(version)
 
 program.addCommand(initCommand)

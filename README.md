@@ -25,10 +25,36 @@ Then: `cd my-app && cp .env.example .env.local && pnpm dev`
 
 - **Next.js 16** App Router + TypeScript strict
 - **Supabase** (auth + DB + optional pgvector)
-- **Claude SDK** pre-wired in `src/lib/ai/chat.ts`
+- **Multi-provider AI** — Anthropic and/or OpenAI behind a thin abstraction in `src/lib/ai/`
 - **`.claude/`** workspace — agents, commands, docs optimized for AI-assisted dev
 - **Tailwind 4** + postcss
 - **Vitest** + Playwright scaffold
+
+## Multi-provider AI
+
+Choose your AI provider at scaffold time:
+
+- **Both (recommended)** — Anthropic + OpenAI installed, switchable via `AI_PROVIDER` in `.env`
+- **Anthropic only** — Claude + Voyage embeddings
+- **OpenAI only** — GPT + OpenAI embeddings
+
+The generated template uses a thin abstraction in `src/lib/ai/` so application code stays provider-agnostic:
+
+```ts
+import { getProvider } from '@/lib/ai'
+
+const ai = await getProvider()
+const result = await ai.generate({
+  messages: [{ role: 'user', content: 'Hello' }],
+})
+```
+
+Same code works with Claude or GPT. Switch by changing one line in `.env`:
+
+```env
+AI_PROVIDER=anthropic
+# AI_PROVIDER=openai
+```
 
 ## Roadmap
 
