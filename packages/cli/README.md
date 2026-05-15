@@ -84,18 +84,6 @@ AI_MODEL=claude-opus-4-7
 EMBEDDING_MODEL=voyage-3-large
 ```
 
-## Migration from claude-mvp-toolkit
-
-This package was previously published as `@massiangelone/claude-mvp-toolkit`. The old package is deprecated and points here. No code changes are required for existing scaffolds — only the install/invocation command changes:
-
-```bash
-# Before
-npx @massiangelone/claude-mvp-toolkit init my-app
-
-# After
-npx @massiangelone/angel1-mvp-toolkit init my-app
-```
-
 ## Status
 
 Stable (v1.0.0). API stable for `init` command and `--ai` flag.

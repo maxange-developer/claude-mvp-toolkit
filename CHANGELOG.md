@@ -21,10 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First stable release. The CLI surface, `--ai` flag values, and template
   structure are now considered stable for v1.x.
 
-### Migration
-
-See README.md "Migration from claude-mvp-toolkit" section.
-
 ---
 
 ## [0.2.1-alpha.0] — 2026-05-12

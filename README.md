@@ -1,7 +1,7 @@
 # angel1-mvp-toolkit
 
 [![npm](https://img.shields.io/npm/v/@massiangelone/angel1-mvp-toolkit?label=npm&color=orange)](https://www.npmjs.com/package/@massiangelone/angel1-mvp-toolkit)
-[![CI](https://github.com/maxange-developer/claude-mvp-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/maxange-developer/claude-mvp-toolkit/actions/workflows/ci.yml)
+[![CI](https://github.com/maxange-developer/angel1-mvp-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/maxange-developer/angel1-mvp-toolkit/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 CLI that scaffolds production-ready Next.js + Supabase apps with multi-provider AI (Claude, OpenAI, or both) in seconds. Answer 5 questions and get a fully configured project with Anthropic or OpenAI, Supabase Auth, optional Stripe payments, Resend email, and RAG/pgvector support — all with TypeScript strict, Tailwind 4, and a pre-wired `.claude/` workspace for AI-assisted development.
@@ -58,25 +58,11 @@ AI_PROVIDER=anthropic
 # AI_PROVIDER=openai
 ```
 
-## Migration from claude-mvp-toolkit
-
-This toolkit was previously published as `@massiangelone/claude-mvp-toolkit`. The old package is deprecated and points here. No code changes are required for existing scaffolds — only the install/invocation command changes:
-
-```bash
-# Before
-npx @massiangelone/claude-mvp-toolkit init my-app
-
-# After
-npx @massiangelone/angel1-mvp-toolkit init my-app
-```
-
 ## Roadmap
 
-| Version | Feature |
-|---------|---------|
-| v0.1 | `init` command — base template |
-| v0.2 | Multi-provider AI (`--ai` flag) |
-| **v1.0** | **Stable release — rebrand to angel1-mvp-toolkit** |
+| Version | Feature | Status |
+|---------|---------|--------|
+| v1.0 | `init` command, multi-provider AI (Claude / OpenAI / Both), Supabase or NextAuth, optional Stripe / Resend / RAG | Released |
 
 ## Docs
 
@@ -85,8 +71,8 @@ Full documentation: [docs/README.md](docs/README.md)
 ## Development
 
 ```bash
-git clone https://github.com/maxange-developer/claude-mvp-toolkit
-cd claude-mvp-toolkit
+git clone https://github.com/maxange-developer/angel1-mvp-toolkit
+cd angel1-mvp-toolkit
 pnpm install
 pnpm -r build
 
@@ -94,5 +80,8 @@ pnpm -r build
 node packages/cli/dist/index.js init /tmp/test-app
 ```
 
----
-Built with [Claude Code](https://claude.ai/code)
+## Related
+
+Part of the `angel1-*` series of open-source tools for AI-enhanced product development:
+
+- **[angel1-rag-eval](https://github.com/maxange-developer/angel1-rag-eval)** — Evaluate RAG pipelines: retrieval precision, faithfulness, correctness. Use it to measure the quality of the RAG endpoint you scaffold with this toolkit.

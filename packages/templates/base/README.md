@@ -1,6 +1,6 @@
 # __PROJECT_NAME__
 
-Built with [angel1-mvp-toolkit](https://github.com/maxange-developer/claude-mvp-toolkit).
+Built with [angel1-mvp-toolkit](https://github.com/maxange-developer/angel1-mvp-toolkit).
 
 ## Setup
 

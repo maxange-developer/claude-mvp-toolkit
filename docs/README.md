@@ -83,12 +83,10 @@ my-app/
 
 ---
 
-## Roadmap
+## Status
+
+Stable (v1.0.0).
 
 | Version | Feature | Status |
 |---------|---------|--------|
-| v0.1 | `init` command — base template | Released |
-| v0.2 | AI chat UI template (streaming) | Planned |
-| v0.3 | RAG pipeline template (pgvector + embeddings) | Planned |
-| v0.4 | `add` command — add features post-init | Planned |
-| v1.0 | Stable · full test coverage | Planned |
+| v1.0 | `init` command, multi-provider AI (Claude / OpenAI / Both), Supabase or NextAuth, optional Stripe / Resend / RAG | Released |

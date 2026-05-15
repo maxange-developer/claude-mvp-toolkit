@@ -19,13 +19,13 @@
     "cli",
     "starter"
   ],
-  "homepage": "https://github.com/maxange-developer/claude-mvp-toolkit#readme",
+  "homepage": "https://github.com/maxange-developer/angel1-mvp-toolkit#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxange-developer/claude-mvp-toolkit.git"
+    "url": "git+https://github.com/maxange-developer/angel1-mvp-toolkit.git"
   },
   "bugs": {
-    "url": "https://github.com/maxange-developer/claude-mvp-toolkit/issues"
+    "url": "https://github.com/maxange-developer/angel1-mvp-toolkit/issues"
   },
   "type": "module",
   "bin": {
